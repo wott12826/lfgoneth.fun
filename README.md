@@ -19,3 +19,7 @@ it means their security service is temporarily blocking the request. This can ha
 - Vercel detects unusually high traffic.
 
 Refreshing the page usually resolves the issue. If the problem persists, disable browser extensions that block scripts or try again from another network.
+
+## Mobile navigation
+
+On screens under 768px wide the main menu collapses into a sidebar. Tap the hamburger icon at the top of the page to reveal the links.
