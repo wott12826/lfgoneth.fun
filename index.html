@@ -3,6 +3,61 @@
   <head>
     <meta charset="UTF-8" />
     <title>LFG</title>
+    <style>
+      /* Скрываем меню и показываем бургер на мобильных */
+      @media (max-width: 768px) {
+        .hfe-nav-menu__layout-horizontal {
+          display: none;
+          position: absolute;
+          top: 60px;
+          left: 0;
+          width: 100vw;
+          background: #fff3;
+          z-index: 1000;
+          flex-direction: column;
+          box-shadow: 0 2px 8px #0002;
+        }
+        .hfe-nav-menu__layout-horizontal.open {
+          display: flex;
+        }
+        .hfe-nav-menu__toggle {
+          display: flex !important;
+          cursor: pointer;
+          z-index: 1100;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+      @media (min-width: 769px) {
+        .hfe-nav-menu__toggle {
+          display: none !important;
+        }
+        .hfe-nav-menu__layout-horizontal {
+          display: flex !important;
+          position: static;
+          background: none;
+          box-shadow: none;
+          flex-direction: row;
+        }
+      }
+      .hfe-nav-menu__toggle {
+        display: none;
+        width: 40px;
+        height: 40px;
+        background: #a5a5ff;
+        border-radius: 8px;
+        align-items: center;
+        justify-content: center;
+      }
+      .hfe-nav-menu-icon {
+        width: 30px;
+        height: 4px;
+        background: #fff;
+        margin: 6px 0;
+        border-radius: 2px;
+        box-shadow: 0 8px 0 0 #fff, 0 16px 0 0 #fff;
+      }
+      </style>
     <meta name="robots" content="max-image-preview:large" />
     <link
       rel="alternate"
@@ -5666,5 +5721,17 @@
           !1
         );
     </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const toggle = document.querySelector('.hfe-nav-menu__toggle');
+        const menu = document.querySelector('.hfe-nav-menu__layout-horizontal');
+        if (toggle && menu) {
+          toggle.addEventListener('click', function() {
+            menu.classList.toggle('open');
+            toggle.setAttribute('aria-expanded', menu.classList.contains('open'));
+          });
+        }
+      });
+      </script>
   </body>
 </html>
